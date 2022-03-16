@@ -9,7 +9,7 @@ const listHdr = document.querySelector('.right-list-h3');
 const verifyContainer = document.querySelector('.verify');
 const verifyBtns = document.querySelector('.verify-btns');
 
-const typeBC = ['#ffecb5', '#e2bbff', '#b6ffee', '#ffb4c0', '#bbfaff'];
+const typeBC = ['LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGrey', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSlateGrey', 'LightSteelBlue', 'LightYellow'];
 let slate = [];
 
 chrome.storage.local.get('slate', ls => {
@@ -33,11 +33,13 @@ addTask.addEventListener('click', addToList);
 function addToList() {
 	const inputType = type.value;
 	const inputValue = input.value;
-	const typeColor = typeBC[Math.floor(Math.random() * typeBC.length)];
 
 	if (inputValue === '' || inputType === '') {
 		return alert('enter value');
 	}
+
+	const foundTypeColor = slate.find(v => v.type === inputType);
+	const typeColor = foundTypeColor ? foundTypeColor.labelColor : typeBC[Math.floor(Math.random() * typeBC.length)];
 
 	const obj = {
 		value: inputValue,

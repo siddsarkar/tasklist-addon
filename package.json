@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "concurrently -k -n dev: -c \"bgGreen.bold,bgYellow.bold\" \"npm:dev:*\"",
+		"build": "concurrently -k -n build: -c \"bgGreen.bold,bgYellow.bold\" \"npm:build:*\"",
 		"lint": "eslint ./src --fix",
 		"watch:css:popup": "npx tailwindcss -i ./src/pages/popup/input.css -o ./src/pages/popup/style.css --watch",
 		"watch:js:chrome": "npx webpack --config-name chrome --mode development --watch",
@@ -27,6 +28,7 @@
 		"webpack-cli": "^4.9.2"
 	},
 	"webExt": {
-		"sourceDir": "firefox/"
+		"sourceDir": "firefox/",
+		"artifactsDir": "artifacts/"
 	}
 }
